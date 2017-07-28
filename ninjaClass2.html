@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NINJA CLASS</title>
+    </head>
+    <body>
+        <script tyoe="text/javascript">
+        var Ninja = function Ninja(name){
+            var speed = 3;
+            var strength = 3;
+            this.name = name;
+            this.health = 100;
+
+            this.showStats = function(){
+                console.log("speed " + speed);
+                console.log("strength " + strength);
+                console.log("Health " + this.health);
+                return this;
+            }//Also part 2..below
+            this.kick = function(ninja){
+                var damage = strength * 5;
+                ninja.health -= damage;
+                console.log(ninja.name + " was kicked by " + this.name + " and lost " + damage + " Health");
+                return this;
+            }//part 2 above
+        }
+        Ninja.prototype.sayName = function(){
+            console.log("My name is " + this.name)
+            return this;
+        }
+
+        Ninja.prototype.drinkSake = function(){
+            this.health += 10;
+            return this;
+        }
+        var ninja1 = new Ninja("Greg");
+        ninja1.sayName();
+        ninja1.showStats();
+        ninja1.showStats();
+        ninja1.drinkSake();
+
+        //Part 2
+        Ninja.prototype.punch = function(Ninja){
+            Ninja.health -= 5;
+            return this;
+        }
+        //part 2 above
+        var blue_ninja = new Ninja("Goemon");
+        var red_ninja = new Ninja("Bill Gates");
+        red_ninja.punch(blue_ninja);
+        blue_ninja.showStats();
+        red_ninja.kick(blue_ninja);
+        blue_ninja.showStats();
+        blue_ninja.kick(red_ninja);
+        red_ninja.showStats();
+        //Assignment 2 .punch()
+        </script>
+    </body>
+</html>
